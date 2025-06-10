@@ -1,4 +1,3 @@
-import fetch from 'node-fetch';
 
 const cloneTemplate = async (sourceToken, destToken, templateId) => {
   const getOtwResponse = await fetch(`https://app.ontask.io/api/v2/workflowTemplates/${templateId}`, {
@@ -23,7 +22,8 @@ const cloneTemplate = async (sourceToken, destToken, templateId) => {
       Authorization: destToken, 
       'Content-Type': 'application/ontask'
     },
-    method: 'PUT'
+    method: 'PUT',
+    duplex: 'half'
   });
 
   return { dest: clonedTemplateId, source: templateId };
