@@ -1,16 +1,16 @@
-const baseUrl = 'https://docubee.app/api/v2';
+const docubeeUrl = 'https://docubee.app/api/v2';
 
 const sourceToken = "SOURCE_WORKSPACE_API_TOKEN";
 const destToken = "DEST_WORKSPACE_API_TOKEN";
 
 const cloneTemplate = async (sourceToken, destToken, templateId) => {
-  const getTemplateListResponse = await fetch(`${baseUrl}/workflowTemplates/${templateId}`, {
+  const getTemplateListResponse = await fetch(`${docubeeUrl}/workflowTemplates/${templateId}`, {
     headers: {
       Authorization: sourceToken
     }
   });
 
-  const createTemplateResponse = await fetch(`${baseUrl}/workflowTemplates`, {
+  const createTemplateResponse = await fetch(`${docubeeUrl}/workflowTemplates`, {
     body: JSON.stringify({}),
     headers: {
       Authorization: destToken,
@@ -20,7 +20,7 @@ const cloneTemplate = async (sourceToken, destToken, templateId) => {
   });
   const { templateId: clonedTemplateId } = await createTemplateResponse.json();
 
-  await fetch(`${baseUrl}/workflowTemplates/${clonedTemplateId}?publish=true`, {
+  await fetch(`${docubeeUrl}/workflowTemplates/${clonedTemplateId}?publish=true`, {
     body: getTemplateListResponse.body,
     headers: {
       Authorization: destToken, 
@@ -34,7 +34,7 @@ const cloneTemplate = async (sourceToken, destToken, templateId) => {
 };
 
 const cloneAllTemplates = async (sourceToken, destToken) => {
-  const response = await fetch(`${baseUrl}/workflowTemplates`, {
+  const response = await fetch(`${docubeeUrl}/workflowTemplates`, {
     headers: {
       Authorization: sourceToken
     }
