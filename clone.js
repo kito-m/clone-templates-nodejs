@@ -1,12 +1,16 @@
+const baseUrl = 'https://docubee.app/api/v2';
+
+const sourceToken = "SOURCE_WORKSPACE_API_TOKEN";
+const destToken = "DEST_WORKSPACE_API_TOKEN";
 
 const cloneTemplate = async (sourceToken, destToken, templateId) => {
-  const getOtwResponse = await fetch(`https://app.ontask.io/api/v2/workflowTemplates/${templateId}`, {
+  const getTemplateListResponse = await fetch(`${baseUrl}/workflowTemplates/${templateId}`, {
     headers: {
       Authorization: sourceToken
     }
   });
 
-  const createTemplateResponse = await fetch('https://app.ontask.io/api/v2/workflowTemplates', {
+  const createTemplateResponse = await fetch(`${baseUrl}/workflowTemplates`, {
     body: JSON.stringify({}),
     headers: {
       Authorization: destToken,
@@ -16,8 +20,8 @@ const cloneTemplate = async (sourceToken, destToken, templateId) => {
   });
   const { templateId: clonedTemplateId } = await createTemplateResponse.json();
 
-  await fetch(`https://app.ontask.io/api/v2/workflowTemplates/${clonedTemplateId}?publish=true`, {
-    body: getOtwResponse.body,
+  await fetch(`${baseUrl}/workflowTemplates/${clonedTemplateId}?publish=true`, {
+    body: getTemplateListResponse.body,
     headers: {
       Authorization: destToken, 
       'Content-Type': 'application/ontask'
@@ -30,7 +34,7 @@ const cloneTemplate = async (sourceToken, destToken, templateId) => {
 };
 
 const cloneAllTemplates = async (sourceToken, destToken) => {
-  const response = await fetch('https://app.ontask.io/api/v2/workflowTemplates', {
+  const response = await fetch(`${baseUrl}/workflowTemplates`, {
     headers: {
       Authorization: sourceToken
     }
@@ -40,12 +44,6 @@ const cloneAllTemplates = async (sourceToken, destToken) => {
   return results;
 };
 
-const [ sourceToken, destToken ] = process.argv.slice(2);
-
-if (!sourceToken || !destToken) {
-  console.error('Usage: node clone :sourceToken :destToken');
-  process.exit(1);
-}
 
 (async () => {
   const results = await cloneAllTemplates(sourceToken, destToken);
