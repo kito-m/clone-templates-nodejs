@@ -1,10 +1,12 @@
+[<img src="https://cdn.docubee.app/static/docubee-logo.png" width="600"/>](https://docubee.app/signup?source=eSigApi)
+
 # Cloning Docubee Templates to a New Group
 
 ## Docubee API Sample
 
 ### Summary
 
-Using the Docubee API, one or more workflow templates can be exported from a master group and subsequently imported into a newly created group. This allows for provisioning of similar groups based on a known source.
+Using the Docubee API, you can export workflow templates from a primary workspace and import them into a new one. This allows for provisioning of similar groups/workspaces based on a known source.
 
 ### API Documentation
 
@@ -23,8 +25,6 @@ The specific endpoints used in this sample are:
 - An API key is generated for each group with at least the `Manage Templates` and `List Templates` permissions. These will be referred to as `sourceToken` and `destToken`.
 
 ### Usage
-
-```sh
 npm install
 node clone :sourceToken :destToken
 ```
