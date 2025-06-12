@@ -1,6 +1,6 @@
 [<img src="https://cdn.docubee.app/static/docubee-logo.png" width="600"/>](https://docubee.app/signup?source=eSigApi)
 
-# Cloning Docubee Templates to a New Group
+# Cloning Docubee Templates to a New Workspace
 
 ## Docubee API Sample
 
@@ -33,3 +33,9 @@ The specific endpoints used in this sample are:
 ```bash
 $ node clone
 ```
+or
+
+```bash
+$ SOURCE_WORKSPACE_API_TOKEN=your_source_token DEST_WORKSPACE_API_TOKEN=your_dest_token node clone
+```
+
