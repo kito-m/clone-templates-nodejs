@@ -10,7 +10,7 @@ Using the Docubee API, you can export workflow templates from a primary workspac
 
 ### API Documentation
 
-Detailed documentation for the Docubee API is available at [docs.docubee.app](https://docs.docubee.app).
+Detailed documentation for the Docubee API is available at [docs.docubee.app](https://docs.docubee.app)
 
 The specific endpoints used in this sample are:
 
