@@ -6,7 +6,7 @@
 
 ### Summary
 
-Using the Docubee API, you can export workflow templates from a primary workspace and import them into a new one. This allows for provisioning of similar groups/workspaces based on a known source.
+Using the Docubee API, you can export workflow templates from a primary workspace and import them into a new one. This allows for provisioning of similar workspaces based on a known source.
 
 ### API Documentation
 
@@ -23,12 +23,13 @@ The specific endpoints used in this sample are:
 
 - Two workspaces exist in Docubee, Source Workspace, which has the existing workflow template(s) to copy and Destination Workspace, which you would like to clone the template(s) to.
 
-- An API key is generated for each workspace with at least the Manage Templates and List Templates permissions. These will be referred to as sourceToken and destToken.### Usage
+- An API key is generated for each workspace with at least the Manage Templates and List Templates permissions. These will be referred to as sourceToken and destToken.
 
-- Set these API keys as environment variables. The token for the Source Workspace must be set as SOURCE_WORKSPACE_API_TOKEN, and the token for the Destination Workspace must be set as DEST_WORKSPACE_API_TOKEN.
-
+- The following two environment variables are then set using the generated keys:
+    For the Source Workspace token, set: SOURCE_WORKSPACE_API_TOKEN
+    For the Destination Workspace token, set: DEST_WORKSPACE_API_TOKEN
 
 ### Usage
 ```bash
-$ node clone 
+$ node clone
 ```
