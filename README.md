@@ -26,11 +26,12 @@ The specific endpoints used in this sample are:
 - An API key is generated for each workspace with at least the Manage Templates and List Templates permissions. These will be referred to as sourceToken and destToken.
 
 - The following two environment variables are then set using the generated keys:
-    For the Source Workspace token, set: SOURCE_WORKSPACE_API_TOKEN
-    For the Destination Workspace token, set: DEST_WORKSPACE_API_TOKEN
+    - For the Source Workspace token, set: SOURCE_WORKSPACE_API_TOKEN
+    - For the Destination Workspace token, set: DEST_WORKSPACE_API_TOKEN
 
 ### Usage
 ```bash
+# With environment variables already set
 $ node clone
 ```
 or
