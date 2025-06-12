@@ -10,7 +10,7 @@ Using the Docubee API, you can export workflow templates from a primary workspac
 
 ### API Documentation
 
-Specifics about the Docubee API can be found in the official documentation at [docs.docubee.app](https://docs.docubee.app).
+Detailed documentation for the Docubee API is available at [docs.docubee.app](https://docs.docubee.app).
 
 The specific endpoints used in this sample are:
 
@@ -21,10 +21,14 @@ The specific endpoints used in this sample are:
 
 ### Preparation
 
-- Two groups exist in Docubee, `Source Group`, which has the existing workflow template(s) to copy and `Destination Group`, which you would like to clone the template(s) to.
-- An API key is generated for each group with at least the `Manage Templates` and `List Templates` permissions. These will be referred to as `sourceToken` and `destToken`.
+- Two workspaces exist in Docubee, Source Workspace, which has the existing workflow template(s) to copy and Destination Workspace, which you would like to clone the template(s) to.
+
+- An API key is generated for each workspace with at least the Manage Templates and List Templates permissions. These will be referred to as sourceToken and destToken.### Usage
+
+- Set these API keys as environment variables. The token for the Source Workspace must be set as SOURCE_WORKSPACE_API_TOKEN, and the token for the Destination Workspace must be set as DEST_WORKSPACE_API_TOKEN.
+
 
 ### Usage
-npm install
-node clone :sourceToken :destToken
+```bash
+$ node clone 
 ```

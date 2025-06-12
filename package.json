@@ -7,7 +7,7 @@
   "license": "MIT",
   "type": "module",
   "engines": {
-    "node": ">=12"
+    "node": ">=16"
   },
   "repository": {
     "type": "git",
