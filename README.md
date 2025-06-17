@@ -6,7 +6,7 @@
 
 ### Summary
 
-Using the Docubee API, you can export workflow templates from a primary workspace and import them into a new one. This allows for provisioning of similar workspaces based on a known source.
+Using the Docubee API, you can export workflow templates from a Source Workspace and import them into a Destination Workspace. This allows for provisioning of similar workspaces based on a known source.
 
 ### API Documentation
 

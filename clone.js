@@ -3,10 +3,10 @@
 
 const docubeeUrl = 'https://docubee.app/api/v2';
 
-const sourceToken = process.env.SOURCE_WORKSPACE_API_TOKEN || "SOURCE_WORKSPACE_API_TOKEN";
-const destToken = process.env.DEST_WORKSPACE_API_TOKEN || "DEST_WORKSPACE_API_TOKEN";
+const sourceToken = process.env.SOURCE_WORKSPACE_API_TOKEN;
+const destToken = process.env.DEST_WORKSPACE_API_TOKEN;
 
-if (sourceToken === "SOURCE_WORKSPACE_API_TOKEN" || destToken === "DEST_WORKSPACE_API_TOKEN") {
+if (!sourceToken || !destToken) {
     console.error('Error - Invalid token(s): Please set SOURCE_WORKSPACE_API_TOKEN and DEST_WORKSPACE_API_TOKEN environment variables.');
     process.exit(1);
 }
