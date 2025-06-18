@@ -1,8 +1,6 @@
 // Get your free API Key at: https://www.docubee.com/solutions/integrations/docubee-api
 // Full Docubee API Documentation: https://docs.docubee.app/#overview
 
-const docubeeUrl = 'https://docubee.app/api/v2';
-
 const sourceToken = process.env.SOURCE_WORKSPACE_API_TOKEN;
 const destToken = process.env.DEST_WORKSPACE_API_TOKEN;
 
@@ -12,13 +10,13 @@ if (!sourceToken || !destToken) {
 }
 
 const cloneTemplate = async (sourceToken, destToken, templateId) => {
-    const getTemplateListResponse = await fetch(`${docubeeUrl}/workflowTemplates/${templateId}`, {
+    const getTemplateListResponse = await fetch(`https://docubee.app/api/v2/workflowTemplates/${templateId}`, {
         headers: {
             Authorization: sourceToken
         }
     });
 
-    const createTemplateResponse = await fetch(`${docubeeUrl}/workflowTemplates`, {
+    const createTemplateResponse = await fetch('https://docubee.app/api/v2/workflowTemplates', {
         body: JSON.stringify({}),
         headers: {
             Authorization: destToken,
@@ -28,7 +26,7 @@ const cloneTemplate = async (sourceToken, destToken, templateId) => {
     });
     const { templateId: clonedTemplateId } = await createTemplateResponse.json();
 
-    await fetch(`${docubeeUrl}/workflowTemplates/${clonedTemplateId}?publish=true`, {
+    await fetch(`https://docubee.app/api/v2/workflowTemplates/${clonedTemplateId}?publish=true`, {
         body: getTemplateListResponse.body,
         headers: {
             Authorization: destToken,
@@ -42,7 +40,7 @@ const cloneTemplate = async (sourceToken, destToken, templateId) => {
 };
 
 const cloneAllTemplates = async (sourceToken, destToken) => {
-    const response = await fetch(`${docubeeUrl}/workflowTemplates`, {
+    const response = await fetch('https://docubee.app/api/v2/workflowTemplates', {
         headers: {
             Authorization: sourceToken
         }
